@@ -1,0 +1,30 @@
+{
+  "name": "html-snippet",
+  "version": "0.0.6",
+  "description": "Create html projects quickly with popular CSS libraries like Tailwind and Bootstrap",
+  "main": "index.js",
+  "bin": "./index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [
+    "html",
+    "tailwind",
+    "bootstrap",
+    "css",
+    "tailwind css",
+    "html css",
+    "tailwind snippet",
+    "html snippet"
+  ],
+  "author": "Aditya Khot",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.1.4"
+  },
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "inquirer": "^9.0.0"
+  }
+}
