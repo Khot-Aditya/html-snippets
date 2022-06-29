@@ -1,9 +1,11 @@
 {
   "name": "html-snippet",
-  "version": "0.0.7",
+  "version": "0.1.2",
   "description": "Create html projects quickly with popular CSS libraries like Tailwind and Bootstrap",
   "main": "index.js",
-  "bin": "./index.js",
+  "bin": {
+    "html-snippet": "index.js"
+  },
   "type": "module",
   "scripts": {
     "start": "node ."
@@ -19,12 +21,20 @@
     "html snippet"
   ],
   "author": "Aditya Khot",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "tailwindcss": "^3.1.4"
   },
   "dependencies": {
     "chalk": "^5.0.1",
     "inquirer": "^9.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Khot-Aditya/html-snippets.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Khot-Aditya/html-snippets/issues"
+  },
+  "homepage": "https://github.com/Khot-Aditya/html-snippets#readme"
 }

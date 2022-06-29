@@ -50,30 +50,51 @@ const copyDirectoryContents = (templatePath, newProjectPath) => {
 };
 
 inquirer
-  .prompt({
-    name: "project_name",
-    type: "input",
-    message: `${chalk.blue("Enter Project Name:")}`,
-    default: "html-project",
-    validate: function (input) {
-      if (/^([A-Za-z\-\\_\d])+$/.test(input)) return true;
-      else
-        return "Project name may only include letters, numbers, underscores and hashes.";
+  .prompt([
+    {
+      name: "project_name",
+      type: "input",
+      message: `${chalk.blue("Enter Project Name:")}`,
+      default: "html-project",
+      validate: function (input) {
+        if (/^([A-Za-z\-\\_\d])+$/.test(input)) return true;
+        else
+          return "Project name may only include letters, numbers, underscores and hashes.";
+      },
     },
-  })
+    {
+      name: "framework",
+      type: "list",
+      message: `${chalk.blue("Select CSS Frame Work:")}`,
+      choices: ["Tailwind", "Bootstrap", "none"],
+      default: "Tailwind",
+    },
+  ])
   .then((answers) => {
     const projectName = answers["project_name"];
+    const framework = answers["framework"];
 
     fs.mkdirSync(`${CURR_DIR}/${projectName}`);
 
-    copyDirectoryContents(`${__dirname}/template/tailwind`, projectName);
+    if (framework === "Tailwind") {
+      copyDirectoryContents(`${__dirname}/template/tailwind`, projectName);
+      runCommand(`cd ${projectName} && npm install`);
 
-    runCommand(`cd ${projectName} && npm install`);
+      console.log(
+        `\n${chalk.green(
+          "Congratulations🥳🎉."
+        )} Now to run project use ${chalk.blue("'npm run start'")} command.\n`
+      );
+    } else if (framework === "Bootstrap") {
+      copyDirectoryContents(`${__dirname}/template/bootstrap`, projectName);
+    } else {
+      copyDirectoryContents(`${__dirname}/template/none`, projectName);
+    }
 
     console.log(
       `\n${chalk.green(
         "Congratulations🥳🎉."
-      )} Now to run project use ${chalk.blue("'npm run start'")} command.\n`
+      )} Project created, have fun coding...\n`
     );
   })
   .catch((error) => {
